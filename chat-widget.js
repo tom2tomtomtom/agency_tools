@@ -1,7 +1,8 @@
 // AI Tool Recommendation Chat Widget
 class ChatWidget {
     constructor() {
-        this.apiKey = localStorage.getItem('openai_api_key');
+        // Check for API key in localStorage or global config
+        this.apiKey = localStorage.getItem('openai_api_key') || this.getConfigKey();
         this.isOpen = false;
         this.departments = [
             'PR & Media Relations Team',
@@ -38,6 +39,11 @@ class ChatWidget {
         };
         
         this.init();
+    }
+    
+    getConfigKey() {
+        // Load API key from global config if available
+        return window.CONFIG?.OPENAI_API_KEY || null;
     }
     
     init() {

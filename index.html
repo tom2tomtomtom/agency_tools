@@ -211,6 +211,13 @@
         <p>&copy; 2025 Your Company. All rights reserved.</p>
     </footer>
 
+    <script>
+        // Try to load config.js if it exists
+        const configScript = document.createElement('script');
+        configScript.src = 'config.js';
+        configScript.onerror = () => console.log('No config.js found - users will need to enter API key manually');
+        document.head.appendChild(configScript);
+    </script>
     <script src="chat-widget.js"></script>
 </body>
 </html>
